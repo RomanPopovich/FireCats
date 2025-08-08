@@ -1,0 +1,14 @@
+/* Reset and base styles  */
+* {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+    box-sizing: border-box;
+}
+body{
+	margin: 0;
+}
+li, ol{
+	text-decoration: none;
+	list-style-type: none;
+}

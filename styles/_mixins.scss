@@ -1,0 +1,61 @@
+@use "./variables" as v;
+@mixin fluid-font($font-size-px){
+    $max-value: calc(#{$font-size-px / 16}rem);
+    $min-value: calc(#{$font-size-px / 16 * 0.6}rem);
+    $value: clamp($min-value,#{$font-size-px/12.8}vw,$max-value);
+    font-size: $value;
+    line-height: $value;
+}
+@mixin primary-button {
+    max-width: 220px;
+    background-color: v.$main_color_1;
+    color: v.$main_color_3;
+    @include fluid-font(20);
+    font-weight: 700;
+    font-family: "Jost";
+    text-align: center;
+    padding: 10px 42px 10px 42px;
+    border-radius: 10px;
+    transition: 0.7s;
+    cursor: pointer;
+}
+@mixin background-cards-blur ($image-path) {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("#{$image-path}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.5;
+        filter: blur(2px);
+        z-index: -1;
+    }
+    
+    
+}
+@mixin background-cards ($image-path) {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("#{$image-path}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -1;
+    }
+}

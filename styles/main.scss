@@ -1,0 +1,31 @@
+@use 'importer';
+html{
+    font-family: "Jost";
+}
+body {
+    &.lock {
+        overflow: hidden;
+    }
+}
+.wrapper {
+    max-width: 100%;
+}
+.container{
+    max-width: 1310px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    @media (max-width: 1024px) {
+        height: 100%;
+    }
+    padding: {
+        left: 15px;
+        right: 15px;
+    }
+}
+.main{
+    max-width: 100%;
+    height: 100%;
+}

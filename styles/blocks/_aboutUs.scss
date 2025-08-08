@@ -1,0 +1,137 @@
+@use "../variables" as v;
+@use "../mixins" as mix;
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(400%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-400%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+.aboutUs {
+    max-width: 100%;
+    background-image: url(../../img/background_about-Us.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    padding-top: 20px;
+    @media (max-width: 1024px) {
+        min-height: auto;
+    }
+
+    @media (max-width: 768px) {
+        background-image: none;
+        background-color: v.$main_background;
+        padding-bottom: 40px;
+    }
+
+    &__container {
+        position: relative;
+        width: 100%;
+        min-height: 600px;
+        margin-top: 10vh;
+
+        @media (max-width: 1024px) {
+            margin-top: 5vh;
+        }
+
+        @media (max-width: 768px) {
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        @media (max-width: 414px) {
+            margin-top: 2vh;
+            min-height: 0;
+        }
+    }
+
+    &__content {
+        max-width: 400px;
+        background-color: rgba(v.$main_color_1, 0.7);
+        display: flex;
+        flex-direction: column;
+        box-shadow: 10px 10px 4px 0 v.$main_color_2;
+
+        &--left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateX(400%);
+            transition: transform 0.7s;
+            @media (max-width: 768px) {
+                position: relative;
+                max-width: 100%;
+                top: auto;
+                left: auto;
+            }
+            &.active {
+                animation: slideInFromRight 0.7s forwards;
+            }
+        }
+        &--right {
+            position: absolute;
+            bottom: 40px;
+            right: 0;
+            box-shadow: -10px 10px 4px 0 v.$main_color_2;
+            transform: translateX(-400%);
+            transition: transform 0.7s;
+            @media (max-width: 768px) {
+                position: relative;
+                max-width: 100%;
+                bottom: auto;
+                right: auto;
+                box-shadow: 10px 10px 4px 0 v.$main_color_2;
+            }
+            &.active {
+                animation: slideInFromLeft 0.7s forwards;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            max-width: 350px;
+        }
+
+        @media (max-width: 768px) {
+            max-width: 100%;
+            margin: 0;
+        }
+    }
+}
+
+.content {
+    &__text {
+        padding: 1rem;
+        color: v.$main_color_3;
+        text-align: center;
+        @include mix.fluid-font(20);
+        font-weight: 400;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        order: 2;
+
+        @media (max-width: 1024px) {
+            padding: 0.7rem;
+        }
+    }
+
+    &__img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        order: 1;
+    }
+}

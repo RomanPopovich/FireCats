@@ -1,0 +1,123 @@
+@use "../variables" as v;
+@use "../mixins" as mix;
+@keyframes opacity {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes opacity-item-card {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.services {
+    background-color: v.$main_background;
+    overflow: visible;
+    min-height: auto;
+    &__container {
+        max-width: 100%;
+        max-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+.cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    &__item {
+        max-width: 100%;
+        height: 250px;
+        padding: 15px;
+        border-radius: 15px;
+        border-color: v.$main_color_1;
+        border-width: 2px;
+        border-style: solid;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        transform: translateY(20px);
+        opacity: 0;
+        justify-content: center;
+        cursor: pointer;
+        &--active {
+            justify-content: space-between;
+        }
+        &.show--item {
+            animation: opacity 0.5s ease forwards;
+        }
+        &--bg_1 {
+            @include mix.background-cards-blur("../../img/services/bg_1.webp");
+        }
+        &--bg_2 {
+            @include mix.background-cards-blur("../../img/services/bg_2.webp");
+        }
+        &--bg_3 {
+            @include mix.background-cards-blur("../../img/services/bg_3.webp");
+        }
+        &--bg_4 {
+            @include mix.background-cards-blur("../../img/services/bg_4.webp");
+        }
+        &--bg_5 {
+            @include mix.background-cards-blur("../../img/services/bg_5.webp");
+        }
+        &--bg_6 {
+            @include mix.background-cards-blur("../../img/services/bg_6.webp");
+        }
+        &--bg_7 {
+            @include mix.background-cards-blur("../../img/services/bg_7.webp");
+        }
+        &--bg_8 {
+            @include mix.background-cards-blur("../../img/services/bg_8.webp");
+        }
+        @media (max-width: 1149px){
+            height: 200px;
+        }
+    }
+    &__title {
+        color: v.$main_color_3;
+        font-weight: 700;
+        text-align: center;
+        font-size: 20px;
+        &--active {
+            display: none;
+        }
+    }
+    &__text {
+        color: v.$main_color_3;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        display: none;
+        &--active {
+            display: block;
+            animation: opacity-item-card 0.5s ease forwards;
+        }
+    }
+    &__button {
+        @include mix.primary-button;
+        margin-top: 20px;
+        display: none;
+        &--active {
+            display: block;
+            animation: opacity-item-card 0.5s ease forwards;
+        }
+        &:hover {
+            background-color: v.$color_hover;
+        }
+    }
+}

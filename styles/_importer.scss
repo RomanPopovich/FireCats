@@ -1,0 +1,11 @@
+@forward 'fonts';
+@forward 'normalize';
+@forward 'variables';
+@forward 'mixins';
+/*****************************/
+@forward './blocks/header';
+@forward './blocks/aboutUs';
+@forward './blocks/services';
+@forward './blocks/slider';
+@forward './blocks/event';
+@forward './blocks/footer';
